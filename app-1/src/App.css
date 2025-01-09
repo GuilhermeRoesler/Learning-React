@@ -1,11 +1,29 @@
-.App {
-  text-align: center;
+/* GLOBAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --clr-green: #28a745;
+  /* Um verde suave e moderno */
+  --clr-white: #f8f9fa;
+  /* Um branco ligeiramente acinzentado para menor contraste */
+  --clr-black: #212529;
+  /* Preto com um tom de cinza escuro */
+  --clr-blue: #3498db;
+  /* Azul claro e vibrante */
+  --clr-blue-hover: #217dbb;
+  /* Azul escuro para o hover */
+  --clr-text-black: #222222;
+  /* Preto suave, ótimo para textos */
+  --clr-text-white: #ffffff;
+  /* Branco puro para textos em fundos escuros */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin-bottom: 100px;
 }
+
+/* MEDIA */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,26 +31,407 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+/* GLOBAL STYLES */
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: flex !important;
+}
+
+.black-color {
+  color: black;
+}
+
+.white-text {
+  color: #fff;
+}
+
+/* MAIN */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+  interpolate-size: allow-keywords;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+/* LOADING */
+
+.Loading {
+  background-color: #212529;
+  width: 100%;
   min-height: 100vh;
+  display: grid;
+  place-content: center;
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+}
+
+/* HEADER AND FOOTER */
+
+.header,
+.footer {
+  background-color: var(--clr-green);
+  min-height: 10vh;
+  padding: 1rem;
+  height: clamp(5vh, 10vh, 15vh);
+}
+
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  padding-inline: 10%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  color: var(--clr-text-white);
+}
+
+.header>a {
+  font-style: none;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* HOME PAGE */
+
+.bem-vindo {
+  height: 100%;
+  width: 75vw;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bem-vindo :is(h1, h4, h5) {
+  margin-top: .5rem;
+  font-family: Arial;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+}
+
+.navbar .dropdown,
+.navbar .dropdown2 {
+  margin-left: 1rem;
+}
+
+.navbar .dropdown>a,
+.navbar .dropdown2>a,
+.navbar>a {
+  font-size: 1.3rem;
+  color: var(--clr-text-black);
+}
+
+.navbar>a {
+  text-decoration: none;
+  padding: .8rem 1rem;
+
+  &:hover {
+    color: white;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.navbar .dropdown>.dropdown-content>.submenu>a::after,
+.navbar .dropdown2 .submenu>li>a::after {
+  content: " ▼";
+}
+
+/* DROPDOWN */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown a {
+  position: relative;
+  display: block;
+  text-align: left;
+  padding: .8rem 1rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Arial;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+
+.dropdown a:hover {
+  background-color: var(--clr-green);
+  color: white;
+}
+
+.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  z-index: 3;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown .submenu {
+  background-color: white;
+  border-radius: 5px;
+  top: 0;
+  z-index: 4;
+}
+
+.dropdown .dropdown-content .submenu {
+  position: relative;
+}
+
+.dropdown .dropdown-content .submenu .dropdown-content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: none;
+  min-width: 160px;
+}
+
+.dropdown .dropdown-content .submenu:hover .dropdown-content {
+  display: block;
+}
+
+/* DROPDOWN2 */
+
+.dropdown2 ul {
+  list-style: none;
+  white-space: nowrap;
+}
+
+.dropdown2 li {
+  list-style-type: none;
+  position: relative;
+}
+
+.dropdown2 a {
+  text-align: left;
+  padding: .8rem 1rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  font-family: Arial;
+}
+
+.dropdown2 .submenu,
+.dropdown2 .submenu2 {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  z-index: 3;
+}
+
+.dropdown2 .submenu2 {
+  top: 0;
+  left: 100%;
+}
+
+.dropdown2 li:hover>a {
+  background-color: var(--clr-green);
+  color: white;
+}
+
+.dropdown2:hover .submenu,
+.dropdown2 .submenu>li:hover .submenu2 {
+  display: block;
+}
+
+/* LOGIN PAGE */
+
+.LoginPage-main {
+  width: 100%;
+  height: 80vh;
+  margin: auto;
+  display: grid;
+  place-content: center;
+}
+
+.LoginPage-main form {
+  background-color: #f4f6f8;
+  padding: 2em;
+  border: 1px solid #ced4da;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.LoginPage-main form label {
+  color: #495057;
+}
+
+.LoginPage-main form input,
+.LoginPage-main form h2 {
+  margin-bottom: 1rem;
+}
+
+.LoginPage-main form input {
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  background-color: #ffffff;
+  border: 1px solid #adb5bd;
+  color: #6c757d;
+  border-radius: .4rem;
+  margin-top: .3rem;
+
+  &:focus {
+    border-color: #3498db !important;
   }
+}
+
+.LoginPage-main form input:focus {
+  border-color: #3498db;
+}
+
+.LoginPage-main form button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: var(--clr-blue);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: .5s;
+
+  &:hover {
+    background-color: var(--clr-blue-hover);
+    translate: 0 -.2rem;
+  }
+}
+
+/* PRODUCTS */
+
+.Products-main {
+  width: 90%;
+  margin-inline: auto;
+}
+
+.Products-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Products-main-header h2 {
+  font-size: 2rem;
+  font-family: 'Poppins';
+  margin-block: 1em;
+}
+
+.Products-main-header input {
+  width: clamp(200px, 300px, 800px);
+  padding: .5em;
+}
+
+.Products-main>ul {
+  list-style: none;
+  display: grid;
+  gap: .5rem;
+}
+
+.Products-main>ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: .7rem;
+  padding: .5em;
+  border: 1px solid #333;
+
+  &:hover {
+    background-color: var(--clr-green);
+
+    & p {
+      color: white;
+    }
+  }
+}
+
+.Products-main>ul li p {
+  font-family: 'Poppins';
+  font-size: .8rem;
+}
+
+.Products-main .filter {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: end;
+  position: relative;
+}
+
+.Products-main .filter a {
+  border: 1px solid #333;
+  border-radius: .5rem;
+  padding: .5em;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: border-radius .3s;
+}
+
+.Products-main table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  overflow: auto;
+  display: block;
+}
+
+.Products-main th,
+.Products-main td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.Products-main th {
+  background-color: #f4f4f4;
+  position: sticky;
+  top: 0;
+}
+
+.Products-main tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
