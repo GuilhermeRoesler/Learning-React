@@ -3,24 +3,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --clr-green: #28a745;
-  /* Um verde suave e moderno */
+  --clr-green: #198731;
+  --clr-green-secondary: #55b96b;
   --clr-white: #f8f9fa;
-  /* Um branco ligeiramente acinzentado para menor contraste */
   --clr-black: #212529;
-  /* Preto com um tom de cinza escuro */
   --clr-blue: #3498db;
-  /* Azul claro e vibrante */
   --clr-blue-hover: #217dbb;
-  /* Azul escuro para o hover */
   --clr-text-black: #222222;
-  /* Preto suave, ótimo para textos */
   --clr-text-white: #ffffff;
-  /* Branco puro para textos em fundos escuros */
+}
+
+/* MAIN */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+  interpolate-size: allow-keywords;
+}
+
+html {
+  interpolate-size: allow-keywords;
 }
 
 body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: sans-serif;
   margin-bottom: 100px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 /* MEDIA */
@@ -49,45 +72,36 @@ body {
   color: #fff;
 }
 
-/* MAIN */
+/* LOADING, ERROR */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins';
-  interpolate-size: allow-keywords;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
-}
-
-body {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: sans-serif;
-}
-
-/* LOADING */
-
-.Loading {
+.Loading,
+.Error {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
   background-color: #212529;
   width: 100%;
   min-height: 100vh;
-  display: grid;
-  place-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: 3rem;
-  color: white;
   font-weight: 700;
+  font-family: 'Poppins';
+  text-align: center;
+  color: white;
+
+  /* & * {
+    translate: 0 -50px;
+  } */
+}
+
+.Loading img,
+.Error img {
+  margin-inline: auto;
+  animation: rotate360 5s infinite linear;
+  margin-bottom: 1em;
 }
 
 /* HEADER AND FOOTER */
@@ -182,7 +196,7 @@ body {
   position: relative;
   display: block;
   text-align: left;
-  padding: .8rem 1rem;
+  padding: .8rem 2rem .8rem 1rem;
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -191,7 +205,8 @@ body {
   border-radius: 5px;
 }
 
-.dropdown a:hover {
+.dropdown .dropdown-content a:hover,
+.dropdown .dropdown-content a:has(+div.dropdown-content:hover) {
   background-color: var(--clr-green);
   color: white;
 }
@@ -403,7 +418,13 @@ body {
   position: relative;
 }
 
-.Products-main .filter a {
+.Products-main .filter .dropdown-content {
+  right: 0;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.Products-main .filter>.dropdown>a {
   border: 1px solid #333;
   border-radius: .5rem;
   padding: .5em;
@@ -430,8 +451,27 @@ body {
   background-color: #f4f4f4;
   position: sticky;
   top: 0;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-green-secondary);
+  }
 }
 
 .Products-main tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+
+.Products-main tr:hover {
+  background-color: var(--clr-green-secondary);
+}
+
+/* KEYFRAMES */
+
+@keyframes rotate360 {
+  to {
+    rotate: 360deg;
+  }
 }

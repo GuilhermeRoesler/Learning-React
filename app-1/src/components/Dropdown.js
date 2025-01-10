@@ -6,7 +6,7 @@ const Dropdown = ({ options, name, link }) => {
             <div className='dropdown-content'>
                 {subOptions.map((option, index) => (
                     <div className='submenu' key={index}>
-                        <a href={option.link}>{option.name}</a>
+                        <a onClick={option.onClick} href={option.link}>{option.name}</a>
                         {option.subOptions && renderSubMenu(option.subOptions)}
                     </div>
                 ))}
