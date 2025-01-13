@@ -71,6 +71,17 @@ export const administrativo = [
         subOptions: [
             { name: 'Produtos SIGH' }
         ]
+    },
+    {
+        name: 'CONTROLE DE PONTO',
+        subOptions: [
+            { name: 'Formulário Justificativa' },
+            { name: 'Formulário Hora-Extra', link: '/controle/horasExtrasFormulario' },
+            { name: 'Visualizar Controle' },
+            { name: 'Visualizar Horas Extras' },
+            { name: 'Acompanhamento Justificativa' },
+            { name: 'Acompanhamento Hora Extra' }
+        ]
     }
 ]
 
@@ -83,5 +94,9 @@ export const outros = [
     },
     {
         name: 'Painel',
+    },
+    {
+        name: 'Registro de Cuidados',
+        link: '/registroCuidados'
     }
 ]

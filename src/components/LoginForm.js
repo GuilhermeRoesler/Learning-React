@@ -8,7 +8,6 @@ const LoginForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(e)
 
     if (username === 'admin' && password === '123') {
       localStorage.setItem('access_token', 1)

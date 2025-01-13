@@ -17,6 +17,7 @@ const Products = () => {
     // FILTER
     const handleFilterClick = (e) => {
         const header = e.target.innerHTML.trim();
+        console.log(header)
 
         const filtered = [...items].sort((a, b) => {
             const valueA = a[header]
